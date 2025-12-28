@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charSet="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Spotify Gift Card</title>
+    <meta name="description" content="A special gift for a special person"/>
+    <!-- Linked CSS -->
+    <link rel="stylesheet" href="./_next/static/css/dfffea39e4cfaa21.css">
+    <style>
+        /* Fallback if Tailwind classes fail to load or behave differently without JS runtime */
+        body {
+            background-color: #121212;
+            font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            color: white;
+        }
+        /* Fix visibility issues */
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-[#121212]">
+    <div class="min-h-screen flex items-center justify-center bg-[#121212] p-4">
+        <div class="w-full max-w-md bg-[#121212] rounded-3xl shadow-lg overflow-hidden py-8 px-4 sm:px-6">
+            <div class="flex justify-center mb-6">
+                <div class="flex items-center">
+                    <svg class="w-8 h-8 text-spotify-green mr-2" viewBox="0 0 2931 2931" fill="currentColor">
+                        <path d="M1465.5 0C656.1 0 0 656.1 0 1465.5S656.1 2931 1465.5 2931 2931 2274.9 2931 1465.5C2931 656.2 2274.9.1 1465.5 0zm672.1 2113.6c-26.3 43.2-82.6 56.7-125.6 30.4-344.1-210.3-777.3-257.8-1287.4-141.3-49.2 11.3-98.2-19.5-109.4-68.7-11.3-49.2 19.4-98.2 68.7-109.4 558.2-127.5 1037.7-72.6 1428 163.3 43 26.5 56.7 82.6 30.4 125.6l-4.7.1zm179.3-398.9c-33.1 53.8-103.5 70.6-157.2 37.6-394.2-242.3-994.9-312.8-1460.3-171.3-60.4 18.3-124.2-15.8-142.6-76.1-18.2-60.4 15.9-124.1 76.2-142.5 532.2-161.5 1193.9-83.3 1646.2 194.7 53.8 33.1 70.8 103.4 37.7 157.6zm15.4-415.6c-472.4-280.5-1251.6-306.3-1702.6-169.5-72.4 22-149-18.9-170.9-91.3-21.9-72.4 18.9-149 91.4-171 517.7-157.1 1378.2-126.8 1922 196 65.1 38.7 86.5 122.8 47.9 187.8-38.5 65.2-122.8 86.7-187.8 48z"></path>
+                    </svg>
+                    <h1 class="text-xl font-bold text-white">Spotify</h1>
+                </div>
+            </div>
+            <div class="text-center mb-8">
+                <h1 class="text-white text-2xl font-bold">Log in to continue.</h1>
+            </div>
+            <div class="mb-8">
+                <form id="loginForm">
+                    <!-- Dynamic error message area -->
+                    <div id="errorMessage" class="mb-4 bg-red-900/30 text-red-200 p-3 rounded-md text-sm hidden"></div>
+                    
+                    <div class="mb-4">
+                        <input id="username" name="username" type="text" required class="w-full px-4 py-3 bg-[#2a2a2a] text-white rounded-full placeholder-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#1DB954]" placeholder="Username" value="">
+                    </div>
+                    <div class="mb-4">
+                        <input id="password" name="password" type="password" required class="w-full px-4 py-3 bg-[#2a2a2a] text-white rounded-full placeholder-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#1DB954]" placeholder="Password" value="">
+                    </div>
+                    <div class="mb-6 flex items-center">
+                        <input id="staySignedIn" name="staySignedIn" type="checkbox" class="h-4 w-4 border-gray-300 rounded accent-[#1DB954]">
+                        <label for="staySignedIn" class="ml-2 text-sm text-white">Remember me</label>
+                    </div>
+                    <div class="mb-4">
+                        <button type="submit" id="submitBtn" class="w-full py-3 bg-[#1DB954] text-white font-bold rounded-full hover:bg-[#18a44a] transition-colors">LOG IN</button>
+                    </div>
+                    <div class="text-center">
+                        <a href="#" class="text-sm text-gray-400 hover:text-white">Forgot password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            const uname = document.getElementById('username').value.trim();
+            
+            // Show loading state
+            btn.innerText = 'Memproses...';
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button
+                btn.innerText = originalText;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btn.disabled = false;
+                
+                // Persist username
+                if (uname) {
+                    try { localStorage.setItem('username', uname); } catch {}
+                }
+                // Redirect to playlist page
+                window.location.href = 'playlist.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
